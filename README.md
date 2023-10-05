@@ -7,6 +7,7 @@ To run the bot, you'll need:
 
 ## Features
 Currently, this bot offers:
-- Using `/ask` to generate a prompt
+- `/ask`: Generates a response to a question
+- `/search`: Searches DuckDuckGo for its response to a question (much slower than `/ask`!)
 
 Note: Only one user can use the bot at a time as of now.
