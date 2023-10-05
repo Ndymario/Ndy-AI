@@ -6,7 +6,7 @@ from ai import llm, duckduckgo_agent
 with open("token.key") as token:
     bot = lightbulb.BotApp(token=token.read())
 
-def response_generator(input, response) -> [hikari.Embed]:
+def response_generator(input, response):
     response_length = len(response)
     num_embeds = math.floor(response_length/4096)
     content = ""
@@ -34,7 +34,7 @@ def response_generator(input, response) -> [hikari.Embed]:
 @lightbulb.option("text", "What you want to ask NdyAI")
 @lightbulb.command("ask", "Ask NdyAI a question", auto_defer = True)
 @lightbulb.implements(lightbulb.SlashCommand)
-async def echo(ctx: lightbulb.Context) -> None:
+async def ask(ctx: lightbulb.Context) -> None:
     try:
         response = llm(ctx.options.text)
     except:
@@ -49,7 +49,7 @@ async def echo(ctx: lightbulb.Context) -> None:
 @lightbulb.option("text", "What you want to ask NdyAI")
 @lightbulb.command("search", "Takes much longer but has access to the internet", auto_defer = True)
 @lightbulb.implements(lightbulb.SlashCommand)
-async def echo(ctx: lightbulb.Context) -> None:
+async def search(ctx: lightbulb.Context) -> None:
     try:
         response = duckduckgo_agent.run(ctx.options.text)
     except:
